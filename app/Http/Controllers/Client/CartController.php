@@ -62,6 +62,7 @@ class CartController extends Controller
     }
     public function listCart(){
         $data['cart'] = session()->get('cart', []);
+        
         return view('cart.list',$data);
     }
     public function addToCart(Request $request)
@@ -84,7 +85,7 @@ class CartController extends Controller
                     "type_slug" => $product->type_slug,
                     "slug"=>$product->slug,
                     "image" => json_decode($product->images)[0],
-                    "color"=>$request->color
+                    "color" =>$request->color
                 ];
             }
         } else {
@@ -102,13 +103,30 @@ class CartController extends Controller
                     "type_slug" => $product->type_slug,
                     "slug"=>$product->slug,
                     "image" => json_decode($product->images)[0],
-                    "color"=>$request->color
+                    "color" =>$request->color
                 ];
             }
         }
         
         session()->put('cart', $cart);
-        return response()->json($cart);
+        $data['cart'] = session()->get('cart',[]);
+        $data['cartItemName'] = $cart[$id]['name'];
+       
+        $view1 = view('cart.cart-desktop', $data)->render();
+        $view2 = view('cart.cart-mobile', $data)->render();
+        $view4 = view('cart.popup-cart-desktop', $data)->render();
+        $view3 = view('cart.poup-mobile', $data)->render();
+        $view5 =view('cart.cart-count',$data)->render();
+
+
+        // $view5 = view('cart.popup-cart-mobile',$data)->render();
+        return response()->json([
+            'html1' => $view1,
+            'html2' => $view2,
+            'html4' => $view4,
+            'html3' => $view3,
+               'html5' => $view5
+        ]);
     }
     public function update(Request $request)
     {
@@ -116,7 +134,23 @@ class CartController extends Controller
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
-            return response()->json($cart);
+            $data['cart'] = session()->get('cart',[]);
+            $data['cartItemName'] = $cart[$request->id]['name'];
+            $view1 = view('cart.cart-desktop', $data)->render();
+            $view2 = view('cart.cart-mobile', $data)->render();
+            $view4 = view('cart.popup-cart-desktop', $data)->render();
+            $view3 = view('cart.poup-mobile', $data)->render();
+            $view5 =view('cart.cart-count',$data)->render();
+
+        
+            return response()->json([
+             
+                'html4' => $view4,
+                'html2' => $view2,
+                'html1'=> $view1,
+               'html3' => $view3,
+               'html5' => $view5
+            ]);
         }
         
     }
@@ -124,11 +158,26 @@ class CartController extends Controller
     {
         if($request->id) {
             $cart = session()->get('cart');
+            $data['cartItemName'] = $cart[$request->id]['name'];
             if(isset($cart[$request->id])) {
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            return response()->json($cart);
+            $data['cart'] = session()->get('cart',[]);
+            $view2 = view('cart.cart-mobile', $data)->render();
+            $view1 = view('cart.cart-desktop', $data)->render();
+            $view4 = view('cart.popup-cart-desktop', $data)->render();
+            $view5 =view('cart.cart-count',$data)->render();
+
+            
+            return response()->json([
+                'html1' => $view1,
+                'html2' => $view2,
+                'html4' => $view4,
+                'html5' => $view5
+            
+
+            ]);
         }
     }
 }

@@ -125,6 +125,7 @@ class PageController extends Controller
         $data['keyword'] = $request->keyword;
         $data['countproduct'] = count($arr);
         $data['resultPro'] = $arr;
+     
         return view('search_result',$data);
     }
     public function postcontact(Request $request){

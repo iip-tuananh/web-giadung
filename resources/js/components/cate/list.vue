@@ -28,7 +28,7 @@
                   <vs-tr :key="indextr" v-for="(tr, indextr) in data">
                     <vs-td :data="tr.id">{{tr.id}}</vs-td>
                     <vs-td :data="tr.id">
-                      <vs-avatar size="70px" :src="tr.avatar" />
+                      <img class="img-cus" size="70px" :src="tr.avatar" />
                     </vs-td>
                     <vs-td :data="tr.name">{{JSON.parse(tr.name)[0].content}}</vs-td>
                     <vs-td :data="tr.id">{{tr.path}}</vs-td>
@@ -127,4 +127,8 @@ export default {
 };
 </script>
 <style>
+.img-cus{
+  height: 100px !important;
+  width: 100px;
+}
 </style>

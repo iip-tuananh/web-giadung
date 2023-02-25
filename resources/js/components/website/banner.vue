@@ -57,7 +57,7 @@
                   >
                       <vs-select-item  value="1" text="Hiện" />
                       <vs-select-item  value="0" text="Ẩn" />
-                      <vs-select-item  value="2" text="Banner header top" />
+                      <!-- <vs-select-item  value="2" text="Banner header top" /> -->
                     </vs-select>
                   </div>
                 </div>

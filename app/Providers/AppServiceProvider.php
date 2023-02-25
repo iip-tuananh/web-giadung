@@ -61,7 +61,7 @@ class AppServiceProvider extends ServiceProvider
             });
             // dd($categoryhome);
             $banners = Banner::where(['status'=>1])->get(['id','image','link','title','description']);
-            $bannerHeaderTop = Banner::where(['status'=>2])->first(['id','image','link','title','description']);
+            $bannerHeaderTop = Banner::where(['status'=>2])->get(['id','image','link','title','description']);
             $aboutUsHeaderTop = PageContent::where(['status'=>2, 'type'=>'ve-chung-toi', 'language'=>'vi'])->get(['title', 'slug']);
             $aboutUsMainMenu = PageContent::where(['status'=>1, 'type'=>'ve-chung-toi', 'language'=>'vi'])->get(['title', 'slug']);
             $aboutUsFooter = PageContent::where(['type'=>'ve-chung-toi', 'language'=>'vi'])->where('status', ">", 0)->get(['title', 'slug']);
@@ -69,6 +69,7 @@ class AppServiceProvider extends ServiceProvider
             $helpCustomHeaderTop = PageContent::where(['status'=>2, 'type'=>'ho-tro-khach-hang', 'language'=>'vi'])->get(['title', 'slug']);
             $helpCustomFooter = PageContent::where(['type'=>'ho-tro-khach-hang', 'language'=>'vi'])->where('status', ">", 0)->get(['title', 'slug']);
             $cartcontent = session()->get('cart', []);
+            // dd($cartcontent);
             $viewold = session()->get('viewoldpro', []);
             $compare = session()->get('compareProduct', []);
             $blogCate = BlogCategory::with([
@@ -84,8 +85,8 @@ class AppServiceProvider extends ServiceProvider
             ->get(['id','name','slug','avatar']);
             $hotBlogs = Blog::where([
                 'status'=>1, 'home_status'=>1
-            ])->orderBy('id','DESC')->get(['id','title','slug','image','description']);
-            $hotProduct = Product::where(['status'=>1, 'discountStatus'=>1])->limit(8)->get(['id', 'name', 'cate_slug', 'slug', 'price', 'images']);
+            ])->orderBy('id','DESC')->limit(4)->get(['id','title','slug','image','description']);
+            $hotProduct = Product::where(['status'=>1, 'discountStatus'=>1])->limit(8)->get(['id', 'name', 'cate_slug', 'slug', 'price', 'images','discount']);
             $view->with([
                 'promotio' => $promotio,
                 'setting' => $setting,

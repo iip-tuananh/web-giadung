@@ -53,4 +53,16 @@ class BillController extends Controller
             'message' => 'success'
         ]);
     }
+    public function delete($code){
+        $data = Bill::where('code_bill', $code)->first();
+        $query = BillDetail::where('code_bill',$code)->get();
+        foreach($query as $item){
+            $item->delete();
+        }
+        $data->delete();
+        return response()->json([
+            'data' => $data,
+            'message' => 'success'
+        ],200);
+    }
 }

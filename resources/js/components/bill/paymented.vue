@@ -61,7 +61,7 @@
                           icon="edit"
                         ></vs-button>
                       </router-link>
-                      <vs-button vs-type="gradient" size="lagre" color="red" icon="delete_forever" @click="confirmDestroy(tr.id)"></vs-button>
+                      <vs-button vs-type="gradient" size="lagre" color="red" icon="delete_forever" @click="confirmDestroy(tr.code_bill)"></vs-button>
                     </vs-td>
                   </vs-tr>
                 </template>
@@ -96,7 +96,7 @@ export default {
     
   },
   methods: {
-    ...mapActions(["draftBill","destroyCate", "loadings"]),
+    ...mapActions(["draftBill","deleteBill", "loadings",]),
     closePop(event) {
       this.listCategory();
       this.popupActivo = event;
@@ -129,9 +129,9 @@ export default {
     },
     destroy(){
       this.loadings(true);
-      this.destroyCate(this.id_item)
+      this.deleteBill(this.id_item)
       .then(response => {
-        this.listCategory()
+        this.draftBills()
         this.loadings(false);
         this.$vs.notify({
               title: "Xóa đơn hàng",

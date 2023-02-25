@@ -54,7 +54,7 @@
 						<div class="logo logo--left ">
 							<h1 class="shop__name">
 								<a href="{{ route('home') }}">
-									KoKo Pet
+									{{$setting->company}}
 								</a>
 							</h1>
 						</div>
@@ -80,7 +80,7 @@
 													</label>
 													<input name="billingEmail" id="email"
 														   type="email" class="field__input"
-														   data-bind="email" value="{{ old('billingEmail') }}">
+														   data-bind="email" value="{{ old('billingEmail') }}" required>
 												</div>
 												@error('billingEmail')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -91,7 +91,7 @@
 													<label for="billingName" class="field__label">Họ và tên</label>
 													<input name="billingName" id="billingName"
 														   type="text" class="field__input"
-														   data-bind="billing.name" value="{{ old('billingName') }}">
+														   data-bind="billing.name" value="{{ old('billingName') }}" required>
 												</div>
 												@error('billingName')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -104,7 +104,7 @@
 													</label>
 													<input name="billingPhone" id="billingPhone"
 														   type="tel" class="field__input"
-														   data-bind="billing.phone" value="{{ old('billingPhone') }}">
+														   data-bind="billing.phone" value="{{ old('billingPhone') }}" required>
 												</div>
 												@error('billingPhone')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -117,7 +117,7 @@
 													</label>
 													<input name="billingAddress" id="billingAddress"
                                              type="text" class="field__input"
-                                             data-bind="billing.address" value="{{ old('billingAddress') }}">
+                                             data-bind="billing.address" value="{{ old('billingAddress') }}" required>
 												</div>
 												@error('billingAddress')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -196,7 +196,7 @@
 															   type="radio" class="input-radio"
 															   data-bind="paymentMethod"
 															   value="509901"
-															   >
+															   required >
 													</div>
 													<label for="paymentMethod-509901" class="radio__label">
 														<span class="radio__label__primary">Thanh toán khi giao hàng (COD)</span>

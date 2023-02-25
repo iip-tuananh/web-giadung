@@ -17,7 +17,7 @@
                 <vs-th>Tên sản phẩm</vs-th>
                 <vs-th>Danh mục</vs-th>
                 <vs-th>Phân loại cấp 1</vs-th>
-                <vs-th>Phân loại cấp 2</vs-th>
+                <!-- <vs-th>Phân loại cấp 2</vs-th> -->
                 <!-- <vs-th>Số lượng</vs-th> -->
                 <vs-th>Hành động</vs-th>
               </template>
@@ -29,8 +29,8 @@
                   <vs-td v-if="tr.cate == null">-----</vs-td>
                   <vs-td v-if="tr.type_cate != null">{{JSON.parse(tr.type_cate.name)[0].content}}</vs-td>
                   <vs-td v-if="tr.type_cate == null">-----</vs-td>
-                  <vs-td v-if="tr.type_two != null">{{JSON.parse(tr.type_two.name)[0].content}}</vs-td>
-                  <vs-td v-if="tr.type_two == null">-----</vs-td>
+                  <!-- <vs-td v-if="tr.type_two != null">{{JSON.parse(tr.type_two.name)[0].content}}</vs-td>
+                  <vs-td v-if="tr.type_two == null">-----</vs-td> -->
                   <!-- <vs-td >{{tr.qty}}</vs-td> -->
                   <vs-td >
                     <router-link :to="{name:'edit_product',params:{id:tr.id}}">

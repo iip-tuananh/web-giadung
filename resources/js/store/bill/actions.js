@@ -38,3 +38,12 @@ export const changeStatus = ({commit},opt) => {
         })
     });
 };
+export const deleteBill = ({commit},opt) => {
+    return new Promise((resolve, reject) => {
+        HTTP.get('/api/bill/delete/'+ opt).then(response => {
+            return resolve(response.data);
+        }).catch(error => {
+            return reject(error);
+        })
+    });
+};

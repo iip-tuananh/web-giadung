@@ -144,7 +144,7 @@
                   />
                 </vs-select>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>Phân loại cấp 2</label>
                 <vs-select
                   class="selectExample"
@@ -159,7 +159,7 @@
                     :key="'v' + index"
                   />
                 </vs-select>
-              </div>
+              </div> -->
               <!-- <div class="form-group">
                 <label>Thông số kỹ thuật</label>
                 <div v-for="(item, index) in objData.size" :key="index">
@@ -197,7 +197,7 @@
                   >Thêm thông số</el-button
                 >
               </div> -->
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>Màu sắc</label>
                 <div v-for="(item, i) in objData.preserve" :key="i">
                   <div class="row">
@@ -226,7 +226,7 @@
                 <el-button size="small" @click="addInput('preserve')"
                   >Thêm màu sắc</el-button
                 >
-              </div>
+              </div> -->
               <div class="form-group">
                 <label>Sản phẩm nổi bật</label>
                 <vs-select v-model="objData.discountStatus">
@@ -234,13 +234,13 @@
                   <vs-select-item value="0" text="Không" />
                 </vs-select>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>Sản phẩm bán chạy</label>
                 <vs-select v-model="objData.bestsellerStatus">
                   <vs-select-item value="1" text="Bán chạy" />
                   <vs-select-item value="0" text="Không" />
                 </vs-select>
-              </div>
+              </div> -->
             </div>
           </div> 
         </div>
