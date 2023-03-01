@@ -110,17 +110,17 @@ export default {
             },
           ],
         },
-        // {
-        //   icon: "mdi mdi-newspaper menu-icon",
-        //   name: "Chính sách phân phối",
-        //   route_name: "",
-        //   sub: [
-        //     {
-        //       name: "Danh sách",
-        //       path: "/service",
-        //     }
-        //   ],
-        // },
+        {
+          icon: "mdi mdi-newspaper menu-icon",
+          name: "Chính sách",
+          route_name: "",
+          sub: [
+            {
+              name: "Danh sách",
+              path: "/service",
+            }
+          ],
+        },
         {
           icon: "mdi mdi-newspaper menu-icon",
           name: "Quản lý tin tức",
